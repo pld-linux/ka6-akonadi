@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	24.02.2
+%define		kdeappsver	24.05.0
 %define		kfver		5.53.0
 %define		qtver		5.15.2
 %define		kaname		akonadi
 Summary:	Akonadi - The PIM Storage Service
 Name:		ka6-%{kaname}
-Version:	24.02.2
+Version:	24.05.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	65aa5e917611de83248363b50cc1b881
+# Source0-md5:	ef757511452223189cf96d0c1db37f80
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -133,6 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/akonadictl
 %attr(755,root,root) %{_bindir}/akonadiserver
 %attr(755,root,root) %{_bindir}/asapcat
+%attr(755,root,root) %{_bindir}/akonadi-db-migrator
 %dir /etc/xdg/akonadi
 /etc/xdg/akonadi/mysql-global-mobile.conf
 /etc/xdg/akonadi/mysql-global.conf
@@ -156,7 +157,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/64x64/apps/akonadi.png
 %{_iconsdir}/hicolor/scalable/apps/akonadi.svgz
 %dir %{_libdir}/qt6/qml/org/kde/akonadi
-#%attr(755,root,root) %{_bindir}/akonadi-db-migrator
 %attr(755,root,root) %{_libdir}/libKPim6AkonadiAgentBase.so.*.*
 %ghost %{_libdir}/libKPim6AkonadiAgentBase.so.6
 %attr(755,root,root) %{_libdir}/libKPim6AkonadiCore.so.*.*
