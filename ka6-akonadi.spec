@@ -173,6 +173,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt6/plugins/pim6/akonadi/akonadi_test_searchplugin.so
 %{_datadir}/kf6/akonadi/akonadi-xml.xsd
 %{_datadir}/kf6/akonadi/kcfg2dbus.xsl
+%dir %{_datadir}/kf6/akonadi_knut_resource
 %{_datadir}/kf6/akonadi_knut_resource/knut-template.xml
 %{_datadir}/qlogging-categories6/akonadi.categories
 %{_datadir}/qlogging-categories6/akonadi.renamecategories
