@@ -10,7 +10,7 @@ Summary:	Akonadi - The PIM Storage Service
 Summary(pl.UTF-8):	Akonadi - usługa przechowywania danych PIM
 Name:		ka6-%{kaname}
 Version:	24.08.2
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -120,10 +120,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %ninja_install -C build
 
-#install -d $RPM_BUILD_ROOT%{_includedir}/KF6/Akonadi
 #install -d $RPM_BUILD_ROOT%{_libdir}/qt6/plugins/pim5/kontact
 #install -d $RPM_BUILD_ROOT%{_libdir}/qt6/plugins/pim5/kcms
-install -d $RPM_BUILD_ROOT%{_libdir}/qt6/qml/org/kde/akonadi
 
 %find_lang %{kaname} --all-name --with-kde
 
@@ -157,8 +155,9 @@ rm -rf $RPM_BUILD_ROOT
 %ghost %{_libdir}/libKPim6AkonadiWidgets.so.6
 %attr(755,root,root) %{_libdir}/libKPim6AkonadiXml.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiXml.so.6
-%dir %{_libdir}/qt6/qml/org/kde/akonadi
 %attr(755,root,root) %{_libdir}/qt6/plugins/designer/akonadi6widgets.so
+%dir %{_libdir}/qt6/plugins/pim6
+%dir %{_libdir}/qt6/plugins/pim6/akonadi
 %attr(755,root,root) %{_libdir}/qt6/plugins/pim6/akonadi/akonadi_test_searchplugin.so
 %dir /etc/xdg/akonadi
 /etc/xdg/akonadi/mysql-global-mobile.conf
@@ -169,6 +168,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/resourcebase.kcfg
 %{_datadir}/dbus-1/interfaces/org.freedesktop.Akonadi.*.xml
 %{_datadir}/dbus-1/services/org.freedesktop.Akonadi.Control.service
+%dir %{_datadir}/kf6/akonadi
 %{_datadir}/kf6/akonadi/akonadi-xml.xsd
 %{_datadir}/kf6/akonadi/kcfg2dbus.xsl
 %dir %{_datadir}/kf6/akonadi_knut_resource
