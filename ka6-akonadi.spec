@@ -46,7 +46,7 @@ BuildRequires:	kf6-kxmlgui-devel >= %{kfver}
 BuildRequires:	libaccounts-qt6-devel >= 1.16
 BuildRequires:	ninja
 BuildRequires:	qt6-build >= %{qtver}
-BuildRequires:	rpmbuild(macros) >= 1.164
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
