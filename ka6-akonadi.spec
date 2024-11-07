@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	%{version}
+%define		kdeappsver	24.08.3
 %define		kfver		5.53.0
 %define		qtver		5.15.2
 %define		kaname		akonadi
 Summary:	Akonadi - The PIM Storage Service
 Summary(pl.UTF-8):	Akonadi - usługa przechowywania danych PIM
 Name:		ka6-%{kaname}
-Version:	24.08.2
-Release:	2
+Version:	24.08.3
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	c6ee7647c6c44f5d63675fa8fceeb60a
+# Source0-md5:	26e656a90376dd27d0d531143f1ae5ca
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
