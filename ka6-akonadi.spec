@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	25.08.2
+%define		kdeappsver	25.08.3
 %define		kfver		5.53.0
 %define		qtver		5.15.2
 %define		kaname		akonadi
 Summary:	Akonadi - The PIM Storage Service
 Summary(pl.UTF-8):	Akonadi - usługa przechowywania danych PIM
 Name:		ka6-%{kaname}
-Version:	25.08.2
-Release:	2
+Version:	25.08.3
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	6973da44d94c039d955ae4747e4121a3
+# Source0-md5:	aefb70fec12ed9bd79962aceee00e252
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -147,24 +147,24 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/akonaditest
 %attr(755,root,root) %{_bindir}/asapcat
 %attr(755,root,root) %{_bindir}/akonadi-db-migrator
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiAgentBase.so.*.*.*
+%{_libdir}/libKPim6AkonadiAgentBase.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiAgentBase.so.6
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiCore.so.*.*.*
+%{_libdir}/libKPim6AkonadiCore.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiCore.so.6
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiPrivate.so.*.*.*
+%{_libdir}/libKPim6AkonadiPrivate.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiPrivate.so.6
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiWidgets.so.*.*.*
+%{_libdir}/libKPim6AkonadiWidgets.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiWidgets.so.6
 %ghost %{_libdir}/libKPim6AkonadiAgentWidgetBase.so.6
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiAgentWidgetBase.so.*.*
-%attr(755,root,root) %{_libdir}/libKPim6AkonadiXml.so.*.*.*
+%{_libdir}/libKPim6AkonadiAgentWidgetBase.so.*.*
+%{_libdir}/libKPim6AkonadiXml.so.*.*.*
 %ghost %{_libdir}/libKPim6AkonadiXml.so.6
-%attr(755,root,root) %{_libdir}/qt6/plugins/designer/akonadi6widgets.so
+%{_libdir}/qt6/plugins/designer/akonadi6widgets.so
 %dir %{_libdir}/qt6/plugins/pim6
 %dir %{_libdir}/qt6/plugins/pim6/akonadi
-%attr(755,root,root) %{_libdir}/qt6/plugins/pim6/akonadi/akonadi_test_searchplugin.so
+%{_libdir}/qt6/plugins/pim6/akonadi/akonadi_test_searchplugin.so
 %dir %{_libdir}/qt6/plugins/pim6/akonadi/config
-%attr(755,root,root) %{_libdir}/qt6/plugins/pim6/akonadi/config/knutconfig.so
+%{_libdir}/qt6/plugins/pim6/akonadi/config/knutconfig.so
 %dir %{_libdir}/qt6/qml/org/kde/akonadi
 %{_libdir}/qt6/qml/org/kde/akonadi/AgentConfigurationForm.qml
 %{_libdir}/qt6/qml/org/kde/akonadi/CollectionChooserPage.qml
@@ -173,7 +173,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/qt6/qml/org/kde/akonadi/TagManagerPage.qml
 %{_libdir}/qt6/qml/org/kde/akonadi/akonadi_quick_plugin.qmltypes
 %{_libdir}/qt6/qml/org/kde/akonadi/kde-qmlmodule.version
-%attr(755,root,root) %{_libdir}/qt6/qml/org/kde/akonadi/libakonadi_quick_plugin.so
+%{_libdir}/qt6/qml/org/kde/akonadi/libakonadi_quick_plugin.so
 %{_libdir}/qt6/qml/org/kde/akonadi/qmldir
 %dir /etc/xdg/akonadi
 /etc/xdg/akonadi/mysql-global-mobile.conf
