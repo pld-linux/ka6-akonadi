@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	26.04.0
+%define		kdeappsver	26.04.1
 %define		kfver		5.53.0
 %define		qtver		5.15.2
 %define		kaname		akonadi
 Summary:	Akonadi - The PIM Storage Service
 Summary(pl.UTF-8):	Akonadi - usługa przechowywania danych PIM
 Name:		ka6-%{kaname}
-Version:	26.04.0
-Release:	2
+Version:	26.04.1
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	8b7494abcd44948715893a3bc664a734
+# Source0-md5:	a49950ac1502810fc469d9533e767687
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -52,6 +52,7 @@ BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	shared-mime-info
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+Requires:	%{name}-data = %{version}-%{release}
 %requires_eq_to Qt6Core Qt6Core-devel
 Obsoletes:	ka5-akonadi < 24
 Conflicts:	akonadi-libs >= 1.0.0
@@ -74,6 +75,20 @@ wszystkich aplikacji PIM.
 Oprócz magazynu danych, Akonadi ma wiele innych komponentów, między
 innymi przeszukiwanie i bibliotekę (buforowanie) dla łatwego dostępu i
 powiadomieniach o zmianach danych.
+
+%package data
+Summary:	Data files for %{kaname}
+Summary(pl.UTF-8):	Dane dla %{kaname}
+Group:		X11/Applications
+Requires(post,postun):	desktop-file-utils
+Obsoletes:	ka5-%{kaname}-data < 24.12.0
+BuildArch:	noarch
+
+%description data
+Data files for %{kaname}.
+
+%description data -l pl.UTF-8
+Dane dla %{kaname}.
 
 %package devel
 Summary:	Header files for %{kaname} development
@@ -132,7 +147,13 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files -f %{kaname}.lang
+%post data
+%update_desktop_database_post
+
+%postun data
+%update_desktop_database_postun
+
+%files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/akonadiagentconfigdialog
 %attr(755,root,root) %{_bindir}/akonadi2xml
@@ -178,6 +199,11 @@ rm -rf $RPM_BUILD_ROOT
 %dir /etc/xdg/akonadi
 /etc/xdg/akonadi/mysql-global-mobile.conf
 /etc/xdg/akonadi/mysql-global.conf
+
+%{systemduserunitdir}/akonadi_control.service
+
+%files data -f %{kaname}.lang
+%defattr(644,root,root,755)
 %{_desktopdir}/org.kde.akonadi.configdialog.desktop
 %dir %{_datadir}/akonadi
 %dir %{_datadir}/akonadi/agents
@@ -201,9 +227,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/48x48/apps/akonadi.png
 %{_iconsdir}/hicolor/64x64/apps/akonadi.png
 %{_iconsdir}/hicolor/scalable/apps/akonadi.svgz
-
-%{systemduserunitdir}/akonadi_control.service
-
 # TODO subpackage
 %{_datadir}/kdevappwizard/templates/akonadiresource.tar.bz2
 %{_datadir}/kdevappwizard/templates/akonadiserializer.tar.bz2
