@@ -2,19 +2,19 @@
 # Conditional build:
 %bcond_with	tests		# test suite
 
-%define		kdeappsver	26.04.3
+%define		kdeappsver	26.08.0
 %define		kfver		5.53.0
 %define		qtver		5.15.2
 %define		kaname		akonadi
 Summary:	Akonadi - The PIM Storage Service
 Summary(pl.UTF-8):	Akonadi - usługa przechowywania danych PIM
 Name:		ka6-%{kaname}
-Version:	26.04.3
+Version:	26.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	1d654a05232229ae32de7e0b9c737c2e
+# Source0-md5:	5ba36ce5bd43d8dd1ec751ca7bf6e30a
 URL:		https://kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel >= %{qtver}
@@ -122,6 +122,7 @@ Pliki dla apparmor.
 %cmake -B build \
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
+	-DBUILD_PYTHON_BINDINGS=OFF \
 	-DKDE_INSTALL_DOCBUNDLEDIR=%{_kdedocdir} \
 	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 
@@ -204,6 +205,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files data -f %{kaname}.lang
 %defattr(644,root,root,755)
+%{_desktopdir}/org.kde.akonadi.desktop
 %{_desktopdir}/org.kde.akonadi.configdialog.desktop
 %dir %{_datadir}/akonadi
 %dir %{_datadir}/akonadi/agents
