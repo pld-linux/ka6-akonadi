@@ -3,14 +3,14 @@
 %bcond_with	tests		# test suite
 
 %define		kdeappsver	26.08.0
-%define		kfver		5.53.0
-%define		qtver		5.15.2
+%define		kfver		6.25.0
+%define		qtver		6.9.0
 %define		kaname		akonadi
 Summary:	Akonadi - The PIM Storage Service
 Summary(pl.UTF-8):	Akonadi - usługa przechowywania danych PIM
 Name:		ka6-%{kaname}
 Version:	26.08.0
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -95,6 +95,19 @@ Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kaname}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	Qt6Core-devel >= %{qtver}
+Requires:	Qt6DBus-devel >= %{qtver}
+Requires:	Qt6Gui-devel >= 5.11.1
+Requires:	Qt6Network-devel >= %{qtver}
+Requires:	Qt6Test-devel >= %{qtver}
+Requires:	Qt6Widgets-devel >= %{qtver}
+Requires:	Qt6Xml-devel >= %{qtver}
+Requires:	kf6-extra-cmake-modules >= %{kfver}
+Requires:	kf6-kconfig-devel >= %{kfver}
+Requires:	kf6-kconfigwidgets-devel >= %{kfver}
+Requires:	kf6-kcoreaddons-devel >= %{kfver}
+Requires:	kf6-kitemmodels-devel >= %{kfver}
+Requires:	kf6-kxmlgui-devel >= %{kfver}
 Obsoletes:	ka5-akonadi-devel < 24
 
 %description devel
